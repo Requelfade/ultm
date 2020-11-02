@@ -1,0 +1,27 @@
+body{
+    background: #434341;
+}
+header{
+    height: 55px;
+}
+.Footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+.Footer-icon, .Footer-icon:hover{
+    color: white;
+    text-decoration: none;
+}
+.Footer-icon-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.Footer-icon-list li{
+    display: inline;
+}

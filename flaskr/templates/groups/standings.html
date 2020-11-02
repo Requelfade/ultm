@@ -1,0 +1,62 @@
+{% extends "groups/groups.html" %}
+
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+{% if phases %}
+    {% for p in phases %}
+        <a href='{{ url_for("groups.groups_standings", phase_name = p) }}'>{{ p }}</a>
+    {% endfor %}
+{% else %}
+<main class="standings w-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <ul class="nav nav-pills flex-column">
+                {% for group in groups %}
+                    <li class="nav-item"><a class="nav-link" href="#group-{{ group['name'] }}" data-toggle="pill">
+                        <h3>Grupa {{ group['name'] }}</h3>
+                    </a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="col tab-content">
+                {% for group in groups %}
+                <div id="group-{{ group['name'] }}" class="tab-pane fade">
+                    <ul class="nav nav-pills flex-column">
+                    {% for team in group['teams'] %}
+                         <li class="nav-item"><a class="nav-link" href="#team-{{ team['id'] }}" data-toggle="pill">
+                             <h4>{{ team['name'] }}</h4>
+                             <h6>Wins: {{ team['wins'] }}, Loses: {{ team['loses'] }}</h6>
+                         </a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col tab-content">
+                {% for group in groups %}
+                    {% for team in group['teams'] %}
+                        <div id="team-{{ team['id'] }}" class="tab-pane fade">
+                            <ul class="nav nav-pills flex-column">
+                                {% for player in team['players'] %}
+                                    <a href='{{ url_for("player.player_home_page", playerid=player["playerid"]) }}'
+                                        style="font-size:40px;">
+                                        {{ player['displayedname'] }}
+                                    <img src='{{ url_for("static", filename="player/positionicons/Position_" + player["rankedrank"].casefold().capitalize() + "-" + player["position"]) + ".png" }}'
+                                    width=50 height=50></a>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endif %}
+{% endblock %}

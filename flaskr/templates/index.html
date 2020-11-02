@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}HOME{% endblock %} || ZSŁ LOL CUP</title>
+
+    <script>
+        var message = "{% if message %}{{ message }}{% else %}{{ 0 }}{% endif %}";
+        var message_type = "{% if message_type %}{{ message_type }}{% else %}{{ 0 }}{% endif %}";
+        var message_header = "{% if message_header %}{{ message_header }}{% else %}{{ 0 }}{% endif %}";
+    </script>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <script src="https://kit.fontawesome.com/3694d081bd.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='toastr/toastr.css') }}">
+    <script src="{{ url_for('static', filename='toastr/toastr.js') }}"></script>
+    <script src="{{ url_for('static', filename='alerts.js') }}"></script>
+    <!-- Other -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='player/lolcup.png') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<div id="menu">
+    <header>
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark h-100">
+            <div class="container">
+                <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light"
+                                href="{{ url_for('groups.groups_standings') }}">
+                                Tabela
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light"
+                                href="{{ url_for('flaskr.teams.list_of_teams') }}">
+                                Drużyny
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light"
+                                href="{{ url_for('groups.groups_standings') }}">
+                                Tabela
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto nav-flex-icons">
+                        <li class="nav-item dropdown show-lg">
+                            <a id="navbarDropdownMenuLink" class="nav-link dropdown-toggle waves-effect waves-light"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i>
+                            </a>
+                            {% if 'user' in session %}
+                                <div class="dropdown-menu dropdown-menu-right dropdown-default bg-dark"
+                                     aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item text-white"
+                                       href="{{ url_for('player.player_home_page') }}">Profil</a>
+                                    <a class="dropdown-item text-white"
+                                       href="{{ url_for('player.logout') }}">Wyloguj</a>
+                                </div>
+                            {% else %}
+                                <div class="dropdown-menu dropdown-menu-right dropdown-default bg-dark"
+                                     aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item text-white"
+                                       href="{{ url_for('player.register_player') }}">Rejestracja</a>
+                                    <a class="dropdown-item text-white"
+                                       href="{{ url_for('player.login') }}">Logowanie</a>
+                                </div>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+<footer class="Footer bg-dark">
+    <div class="my-3 flex-center">
+        <ul class="Footer-icon-list">
+            <li><a href="#" class="Footer-icon"><i class="fab fa-discord fa-2x mr-md-5 mr-3 my-1"></i></a></li>
+            <li><a href="#" class="Footer-icon"><i class="fab fa-facebook fa-2x mr-md-5 mr-3 my-1"></i></a></li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

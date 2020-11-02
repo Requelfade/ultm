@@ -1,0 +1,16 @@
+setup.py
+flaskr/__init__.py
+flaskr/admin.py
+flaskr/db.py
+flaskr/groups.py
+flaskr/index.py
+flaskr/live_game.py
+flaskr/match_handler.py
+flaskr/player.py
+flaskr/teams.py
+flaskr.egg-info/PKG-INFO
+flaskr.egg-info/SOURCES.txt
+flaskr.egg-info/dependency_links.txt
+flaskr.egg-info/not-zip-safe
+flaskr.egg-info/requires.txt
+flaskr.egg-info/top_level.txt

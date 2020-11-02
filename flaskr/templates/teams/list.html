@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block title %}
+Lista Drużyn
+{% endblock %}
+
+{% block content %}
+{% for t in teams %}
+    <div>
+        <a href='{{ url_for("flaskr.teams.team_profile", idteam=t["id"]) }}'>
+            <h3>{{ t["name"] }} <h4>{{ t["tag"] }}</h4></h3>
+            <h5>Wins: {{ t["wins"] }}  Loses: {{  t["loses"] }}</h5>
+        </a>
+    </div>
+{% endfor %}
+{% endblock %}

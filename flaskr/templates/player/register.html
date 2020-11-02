@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block title %}
+Rejestracja
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='player/login_style.css') }}">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+<!--BOX DO LOGOWOANIA-->
+<div class="mh-75">
+<form class="box" action="" method="post">
+  <h1><img src="{{ url_for('static', filename='player/lolcup.png') }}" width="40%" height="40%"></h1>
+  <input type="text" name="login" placeholder="Nazwa Użytkownika">
+    <input type="email" name="email" placeholder="Email">
+  <input type="password" name="password" placeholder="Hasło">
+    <input type="password" name="rpassword" placeholder="Powtórz Hasło">
+  <input type="submit" value="Zarejestruj">
+</form>
+</div>
+
+{% endblock %}

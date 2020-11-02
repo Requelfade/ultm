@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block title %}
+    {% if 'playerid' in playerdata %}
+        {{ playerdata['username'] }}
+    {% else %}
+        {{ "Dummy" }}
+    {% endif %}
+{% endblock %}
+
+{% block head %}
+{% if 'rankedrank' in playerdata and 'position' in playerdata %}
+<link rel="icon" type="image/png" href='{{ url_for("static", filename="player/positionicons/Position_" + playerdata["rankedrank"].casefold().capitalize() + "-" + playerdata["position"]) + ".png" }}'>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="">
+    {% if playerdata['isself'] %}
+        YES
+    {% else %}
+        NO
+    {% endif %}
+    <img src='{{ url_for("static", filename="player/positionicons/Position_" + playerdata["rankedrank"].casefold().capitalize() + "-" + playerdata["position"]) + ".png" }}'
+    width=50 height=50>
+    {{ playerdata['isverified'] }}
+
+</div>
+{% endblock %}

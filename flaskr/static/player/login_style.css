@@ -1,0 +1,58 @@
+.content{
+    height: 100%;
+}
+#form-div{
+  margin: 0;
+  padding: 0;
+  background: #434341;
+}
+.box{
+  width: 300px;
+  position: absolute;
+  padding: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.box input[type = "text"],.box input[type = "password"],.box input[type = "email"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box input[type = "text"]:focus,.box input[type = "password"]:focus,.box input[type = "email"]:focus{
+  width: 280px;
+  border-color: #ffd54a;
+}
+.box input[type = "submit"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #77c4e5;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.box input[type = "submit"]:hover{
+  background: #77c4e5;
+}
+.register-page, .register-page:hover{
+color: #ffd54a;
+text-decoration: none;
+}
+

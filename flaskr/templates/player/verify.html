@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+
+{% block content %}
+<p>{{ code }}</p>
+<form method="POST">
+    <input type="hidden" name="code" value="{{ code }}">
+    <button type="submit">Zweryfikuj</button>
+</form>
+{% endblock %}
